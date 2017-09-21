@@ -15,6 +15,29 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'user',
+        data: {
+          menu: {
+            icon: 'ion-person-stalker',
+            title: '后台用户管理',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: 'list',
+            data: {
+              menu: {
+                icon: 'ion-person-stalker',
+                title: '用户管理'
+              }
+            }
+          }
+        ]
+      },
+      {
         path: 'editors',
         data: {
           menu: {
@@ -208,14 +231,14 @@ export const PAGES_MENU = [
               }
             }
           },
-           {
-             path: 'hottables',
-             data: {
-               menu: {
-                 title: 'Hot Tables',
-               }
-             }
-           }
+          {
+            path: 'hottables',
+            data: {
+              menu: {
+                title: 'Hot Tables',
+              }
+            }
+          }
         ]
       },
       {
