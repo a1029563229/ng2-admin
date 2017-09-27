@@ -7,10 +7,12 @@ import {
     UserAddComponent
 } from './user-list';
 import { routing } from './user.routing';
+import { NgaModule } from '../../theme/nga.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        NgaModule,
         routing
     ],
     declarations: [
