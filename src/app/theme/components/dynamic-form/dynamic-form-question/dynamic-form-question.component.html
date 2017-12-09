@@ -1,9 +1,10 @@
-<div [formGroup]="form">
+<div [formGroup]="form" class="form-group">
     <div [ngSwitch]="question.controlType">
-        <input *ngSwitchCase="'input'" [formControlName]="question.key" [id]="question.key" [type]="question.type">
-
-        <select [id]="question.key" *ngSwitchCase="'select'" [formControlName]="question.key">
-            <option *ngFor="let opt of question.options" [value]="opt.value">{{opt.key}}</option>
-          </select>
+      <ng-container *ngSwitchCase="'input'">
+        <input-textbox [question]="question" [form]="form"></input-textbox>
+      </ng-container>
+      <ng-container *ngSwitchCase="'select'">
+        <input-select [question]="question" [form]="form"></input-select>
+      </ng-container>
     </div>
 </div>

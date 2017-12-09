@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { QuestionBase } from '../dynamic-form-base/question-base';
+import { QuestionBase } from '../../dynamic-form-components/dynamic-form-base/question-base';
 
 @Component({
   selector: 'df-question',

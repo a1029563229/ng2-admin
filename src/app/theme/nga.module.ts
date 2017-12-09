@@ -33,6 +33,11 @@ import {
   DynamicFormQuestionComponent
 } from './components';
 
+import {
+  InputTextboxComponent,
+  InputSelectComponent
+} from './components/dynamic-form-components/dynamic-form-questions';
+
 import { BaCardBlur } from './components/baCard/baCardBlur.directive';
 
 import {
@@ -79,6 +84,11 @@ const NGA_COMPONENTS = [
   DynamicFormQuestionComponent
 ];
 
+const NGA_FORM_COMPONENTS = [
+  InputTextboxComponent,
+  InputSelectComponent
+]
+
 const NGA_DIRECTIVES = [
   BaScrollPosition,
   BaSlimScroll,
@@ -108,7 +118,8 @@ const NGA_VALIDATORS = [
   declarations: [
     ...NGA_PIPES,
     ...NGA_DIRECTIVES,
-    ...NGA_COMPONENTS
+    ...NGA_COMPONENTS,
+    ...NGA_FORM_COMPONENTS
   ],
   imports: [
     CommonModule,

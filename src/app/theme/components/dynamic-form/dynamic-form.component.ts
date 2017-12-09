@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { QuestionBase } from './dynamic-form-base/question-base';
+import { QuestionBase } from '../dynamic-form-components/dynamic-form-base/question-base';
 import { QuestionControlService } from './question-control.service';
 
 @Component({
   selector: 'dynamic-form',
   templateUrl: './dynamic-form.component.html',
+  styleUrls: ['./dynamic-form.component.scss'],
   providers: [QuestionControlService]
 })
 
