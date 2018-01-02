@@ -26,7 +26,7 @@ export class QuestionBase<T>{
         this.required = !!options.required;
         this.disabled = !!options.disabled;
         this.reg = options.reg || '';
-        this.prompt = options.prompt || '';
+        this.prompt = options.prompt || '该项为必填/选项';
         this.order = options.order || 0;
         this.controlType = options.controlType || '';
     }

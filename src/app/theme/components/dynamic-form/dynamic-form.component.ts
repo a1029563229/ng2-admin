@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 
 import { QuestionBase } from '../dynamic-form-components/dynamic-form-base/question-base';
 import { QuestionControlService } from './question-control.service';
+import "style-loader!./dynamic-fom-components.component.scss";
 
 @Component({
   selector: 'dynamic-form',

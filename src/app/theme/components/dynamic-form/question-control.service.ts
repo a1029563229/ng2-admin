@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { QuestionBase } from './dynamic-form-base';
+import { QuestionBase } from '../dynamic-form-components/dynamic-form-base/question-base';
 
 @Injectable()
 export class QuestionControlService {
     constructor() { }
 
     // 转化为控件
-    toFormGroup(questions: QuestionBase<any>[]) {
+    public toFormGroup(questions: QuestionBase<any>[]) {
         let group: any = {};
 
         questions.forEach(question => {
@@ -25,5 +25,19 @@ export class QuestionControlService {
             }
         });
         return new FormGroup(group);
+    }
+
+    public getControlProperty(): void {
+      Object.defineProperty(this, 'isValid', {
+        get() {
+          return this.form.controls[this.question.key].valid;
+        }
+      });
+
+      Object.defineProperty(this, 'isTouched', {
+        get() {
+          return this.form.controls[this.question.key].touched;
+        }
+      });
     }
 }

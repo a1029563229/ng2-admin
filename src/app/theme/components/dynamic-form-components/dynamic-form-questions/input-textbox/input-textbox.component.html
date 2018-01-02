@@ -1,4 +1,6 @@
-<div class="form-container" [formGroup]="form">
-  <label for="">{{question.label}}</label>
+<div class="form-container" [formGroup]="form" [ngClass]="{'has-error':!isValid && isTouched,
+'has-success': isValid && isTouched}">
+  <label for=""><i>*</i>{{question.label}}</label>
   <input class="form-control" [formControlName]="question.key" [id]="question.key" [type]="question.type">
+  <span *ngIf="!isValid && !!isTouched" class="prompt-error">{{question.prompt}}</span>
 </div>

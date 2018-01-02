@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { UserAddService } from './user-add.service';
-import { QuestionBase } from '../../../../theme/components/dynamic-form/dynamic-form-base/question-base';
+import { QuestionBase } from '../../../../theme/components/dynamic-form-components/dynamic-form-base';
 
 @Component({
   selector: 'ngt-user-add',
@@ -11,7 +11,7 @@ import { QuestionBase } from '../../../../theme/components/dynamic-form/dynamic-
 
 export class UserAddComponent {
   public UserAddQuestions: QuestionBase<any>[] = [];
-  
+
   constructor(
     private service: UserAddService
   ) {

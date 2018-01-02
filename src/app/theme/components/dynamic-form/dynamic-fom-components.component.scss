@@ -1,0 +1,22 @@
+$errorColor: #fa758e;
+
+.form-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  label {
+    width: 10%;
+    margin-right: 20px;
+    i {
+      color: $errorColor;
+      margin-right: 5px;
+    }
+  }
+  .form-control {
+    width: 25%;
+  }
+  .prompt-error {
+    color: $errorColor;
+    margin-left: 20px;
+  }
+}
