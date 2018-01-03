@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 
 import { BaMenuService } from '../theme';
 import { PAGES_MENU } from './pages.menu';
+import "style-loader!sweetalert2/dist/sweetalert2.min.css";
 
 @Component({
   selector: 'pages',

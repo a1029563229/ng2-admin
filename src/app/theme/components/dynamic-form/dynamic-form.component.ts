@@ -1,33 +1,44 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from "@angular/core";
+import { Location } from '@angular/common';
+import { FormGroup } from "@angular/forms";
 
-import { QuestionBase } from '../dynamic-form-components/dynamic-form-base/question-base';
-import { QuestionControlService } from './question-control.service';
+import { QuestionBase } from "../dynamic-form-components/dynamic-form-base/question-base";
+import { QuestionControlService } from "./question-control.service";
+import { DynamicFormService } from "./dynamic-form.service";
 import "style-loader!./dynamic-fom-components.component.scss";
+import { FormConfig } from './form-base';
+import swal from "sweetalert2";
 
 @Component({
-  selector: 'dynamic-form',
-  templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss'],
-  providers: [QuestionControlService]
+  selector: "dynamic-form",
+  templateUrl: "./dynamic-form.component.html",
+  styleUrls: ["./dynamic-form.component.scss"],
+  providers: [QuestionControlService, DynamicFormService]
 })
-
 export class DynamicFormComponent implements OnInit {
   @Input() questions: QuestionBase<any>[] = [];
+  @Input() config: FormConfig;
   form: FormGroup;
-  payload = '';
+  payload = "";
 
   constructor(
-    private qcs: QuestionControlService
-  ) { }
+    private qcs: QuestionControlService,
+    private service: DynamicFormService,
+    private _location: Location
+  ) {}
 
   ngOnInit() {
-    console.log(this.questions);
     this.form = this.qcs.toFormGroup(this.questions);
-    console.log(this.form);
   }
 
   onSubmit() {
     this.payload = JSON.stringify(this.form.value);
+    this.service.saveQuery(this.config.url, this.payload)
+      .subscribe((res: Response) => {
+        console.log(res);
+        swal("success","","success").then(() => {
+          this._location.back();
+        });
+      })
   }
 }

@@ -1,17 +1,14 @@
-import { NgModule, ModuleWithProviders }      from '@angular/core';
-import { CommonModule }  from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { NgUploaderModule } from 'ngx-uploader';
-import { AppTranslationModule } from '../app.translation.module';
+import { NgModule, ModuleWithProviders } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { NgUploaderModule } from "ngx-uploader";
+import { AppTranslationModule } from "../app.translation.module";
+import { HttpClientModule } from "@angular/common/http";
 
-import {
-  BaThemeConfig
-} from './theme.config';
+import { BaThemeConfig } from "./theme.config";
 
-import {
-  BaThemeConfigProvider
-} from './theme.configProvider';
+import { BaThemeConfigProvider } from "./theme.configProvider";
 
 import {
   BaAmChart,
@@ -31,38 +28,31 @@ import {
   BaFileUploader,
   DynamicFormComponent,
   DynamicFormQuestionComponent
-} from './components';
+} from "./components";
 
 import {
   InputTextboxComponent,
   InputSelectComponent
-} from './components/dynamic-form-components/dynamic-form-questions';
+} from "./components/dynamic-form-components/dynamic-form-questions";
 
-import { BaCardBlur } from './components/baCard/baCardBlur.directive';
+import { BaCardBlur } from "./components/baCard/baCardBlur.directive";
 
-import {
-  BaScrollPosition,
-  BaSlimScroll,
-  BaThemeRun
-} from './directives';
+import { BaScrollPosition, BaSlimScroll, BaThemeRun } from "./directives";
 
 import {
   BaAppPicturePipe,
   BaKameleonPicturePipe,
   BaProfilePicturePipe
-} from './pipes';
+} from "./pipes";
 
 import {
   BaImageLoaderService,
   BaMenuService,
   BaThemePreloader,
   BaThemeSpinner
-} from './services';
+} from "./services";
 
-import {
-  EmailValidator,
-  EqualPasswordsValidator
-} from './validators';
+import { EmailValidator, EqualPasswordsValidator } from "./validators";
 
 const NGA_COMPONENTS = [
   BaAmChart,
@@ -84,17 +74,9 @@ const NGA_COMPONENTS = [
   DynamicFormQuestionComponent
 ];
 
-const NGA_FORM_COMPONENTS = [
-  InputTextboxComponent,
-  InputSelectComponent
-]
+const NGA_FORM_COMPONENTS = [InputTextboxComponent, InputSelectComponent];
 
-const NGA_DIRECTIVES = [
-  BaScrollPosition,
-  BaSlimScroll,
-  BaThemeRun,
-  BaCardBlur
-];
+const NGA_DIRECTIVES = [BaScrollPosition, BaSlimScroll, BaThemeRun, BaCardBlur];
 
 const NGA_PIPES = [
   BaAppPicturePipe,
@@ -109,10 +91,7 @@ const NGA_SERVICES = [
   BaMenuService
 ];
 
-const NGA_VALIDATORS = [
-  EmailValidator,
-  EqualPasswordsValidator
-];
+const NGA_VALIDATORS = [EmailValidator, EqualPasswordsValidator];
 
 @NgModule({
   declarations: [
@@ -125,26 +104,23 @@ const NGA_VALIDATORS = [
     CommonModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AppTranslationModule,
     NgUploaderModule
   ],
-  exports: [
-    ...NGA_PIPES,
-    ...NGA_DIRECTIVES,
-    ...NGA_COMPONENTS
-  ]
+  exports: [...NGA_PIPES, ...NGA_DIRECTIVES, ...NGA_COMPONENTS]
 })
 export class NgaModule {
   static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders> {
+    return <ModuleWithProviders>{
       ngModule: NgaModule,
       providers: [
         BaThemeConfigProvider,
         BaThemeConfig,
         ...NGA_VALIDATORS,
         ...NGA_SERVICES
-      ],
+      ]
     };
   }
 }

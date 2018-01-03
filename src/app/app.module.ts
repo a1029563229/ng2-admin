@@ -1,33 +1,31 @@
-import { NgModule, ApplicationRef } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
+import { NgModule, ApplicationRef } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { RouterModule } from "@angular/router";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { TranslateService } from "@ngx-translate/core";
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { routing } from './app.routing';
+import { routing } from "./app.routing";
 
 // App is our top level component
-import { App } from './app.component';
-import { AppState, InternalStateType } from './app.service';
-import { GlobalState } from './global.state';
-import { NgaModule } from './theme/nga.module';
-import { PagesModule } from './pages/pages.module';
-
+import { App } from "./app.component";
+import { AppState, InternalStateType } from "./app.service";
+import { GlobalState } from "./global.state";
+import { NgaModule } from "./theme/nga.module";
+import { PagesModule } from "./pages/pages.module";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NoopInterceptor } from './pages/api/http/noopInterceptor';
 
 // Application wide providers
-const APP_PROVIDERS = [
-  AppState,
-  GlobalState
-];
+const APP_PROVIDERS = [AppState, GlobalState];
 
 export type StoreType = {
-  state: InternalStateType,
-  restoreInputValues: () => void,
-  disposeOldHosts: () => void
+  state: InternalStateType;
+  restoreInputValues: () => void;
+  disposeOldHosts: () => void;
 };
 
 /**
@@ -35,10 +33,9 @@ export type StoreType = {
  */
 @NgModule({
   bootstrap: [App],
-  declarations: [
-    App
-  ],
-  imports: [ // import Angular's modules
+  declarations: [App],
+  imports: [
+    // import Angular's modules
     BrowserModule,
     HttpModule,
     RouterModule,
@@ -49,13 +46,16 @@ export type StoreType = {
     PagesModule,
     routing
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    APP_PROVIDERS
+  providers: [
+    // expose our Services and Providers into Angular's dependency injection
+    APP_PROVIDERS,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NoopInterceptor,
+      multi: true,
+    }
   ]
 })
-
 export class AppModule {
-
-  constructor(public appState: AppState) {
-  }
+  constructor(public appState: AppState) {}
 }
