@@ -1,0 +1,27 @@
+<section>
+  <table class="table">
+    <thead class="thead-default">
+      <tr>
+        <th *ngFor="let tableControl of tableControls;">{{tableControl.title}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 根据数据渲染对应的行数 -->
+      <tr *ngFor="let tableData of tableDatas;">
+        <!-- 根据控件显示对应的列 -->
+        <td *ngFor="let tableControl of tableControls">
+          <ul [ngSwitch]="tableControl.controlType">
+            <!-- 显示对应字段的值 -->
+            <li *ngSwitchCase="'text'">
+              {{tableData[tableControl['key']]}}
+            </li>
+            <!-- 显示原始数据 -->
+            <li *ngSwitchDefault>
+              {{tableData | json}}
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

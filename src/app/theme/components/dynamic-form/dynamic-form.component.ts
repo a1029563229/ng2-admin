@@ -4,7 +4,7 @@ import { FormGroup } from "@angular/forms";
 
 import { QuestionBase } from "../dynamic-form-components/dynamic-form-base/question-base";
 import { QuestionControlService } from "./question-control.service";
-import { DynamicFormService } from "./dynamic-form.service";
+import { DynamicService } from "../../../pages/api/http/dynamic.service";
 import "style-loader!./dynamic-fom-components.component.scss";
 import { FormConfig } from './form-base';
 import swal from "sweetalert2";
@@ -13,7 +13,7 @@ import swal from "sweetalert2";
   selector: "dynamic-form",
   templateUrl: "./dynamic-form.component.html",
   styleUrls: ["./dynamic-form.component.scss"],
-  providers: [QuestionControlService, DynamicFormService]
+  providers: [QuestionControlService]
 })
 export class DynamicFormComponent implements OnInit {
   @Input() questions: QuestionBase<any>[] = [];
@@ -23,7 +23,7 @@ export class DynamicFormComponent implements OnInit {
 
   constructor(
     private qcs: QuestionControlService,
-    private service: DynamicFormService,
+    private service: DynamicService,
     private _location: Location
   ) {}
 

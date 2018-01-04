@@ -108,6 +108,7 @@
     "karma-jasmine-html-reporter": "0.2.2",
     "npm-run-all": "4.0.2",
     "protractor": "5.1.0",
+    "reset.css": "^2.0.2",
     "rimraf": "2.6.1",
     "standard-changelog": "1.0.1",
     "stylelint": "7.10.1",
