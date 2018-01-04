@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -18,7 +19,6 @@ export class NoopInterceptor implements HttpInterceptor {
     return next
       .handle(req)
       .do(event => {
-        console.log("request");
         if (event instanceof HttpResponse) {
           const elapsed = Date.now() - started;
           console.log(`Request for ${req.urlWithParams} took ${elapsed} ms.`);

@@ -1,0 +1,10 @@
+.table thead tr th {
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  font-size: 16px;
+  border-top: none;
+}
+
+.table tbody > :first-child td {
+  border-top: none;
+}

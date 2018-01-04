@@ -27,7 +27,8 @@ import {
   BaSidebar,
   BaFileUploader,
   DynamicFormComponent,
-  DynamicFormQuestionComponent
+  DynamicFormQuestionComponent,
+  DynamicTableComponent
 } from "./components";
 
 import {
@@ -71,7 +72,8 @@ const NGA_COMPONENTS = [
   BaSidebar,
   BaFileUploader,
   DynamicFormComponent,
-  DynamicFormQuestionComponent
+  DynamicFormQuestionComponent,
+  DynamicTableComponent
 ];
 
 const NGA_FORM_COMPONENTS = [InputTextboxComponent, InputSelectComponent];
